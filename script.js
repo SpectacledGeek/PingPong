@@ -17,9 +17,9 @@ let paddle1Y = 150;
 let paddle2Speed = 0;
 let paddle2Y = 150;
 let ballX = 290;
-let ballSpeedX = 2;
+let ballSpeedX = 3;
 let ballY = 190;
-let ballSpeedY = 2;
+let ballSpeedY = 3;
 let player2Score = 0;
 let player1Score = 0;
 
