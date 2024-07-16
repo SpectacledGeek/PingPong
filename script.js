@@ -5,6 +5,9 @@ const paddle2 = document.getElementById("paddle2");
 const ball = document.getElementById("ball");
 const player1ScoreElement = document.getElementById("player1Score");
 const player2ScoreElement = document.getElementById("player2Score");
+const lossSound = document.getElementById('lossSound')
+const wallSound = document.getElementById('wallSound')
+const paddleSound = document.getElementById('paddleSound')
 
 // GAME VARIABLES
 let gameRunning = false;
@@ -116,6 +119,7 @@ function moveBall(){
     ballY += ballSpeedY;
     //TOP-BOTTOM BORDER
     if (ballY >= gameHeight-ball.clientHeight || ballY <= 0){
+        playSound(wallSound)
         ballSpeedY = -ballSpeedY
     }
     //LEFT PADDLE HIT
@@ -123,6 +127,7 @@ function moveBall(){
         ballY >= paddle1Y && 
         ballY <= paddle1Y + paddle1.clientHeight
     ){
+        playSound(paddleSound)
         ballSpeedX = -ballSpeedX
     }
     //RIGHT PADDLE HIT
@@ -130,11 +135,13 @@ function moveBall(){
         ballY >= paddle2Y && 
         ballY <= paddle2Y + paddle2.clientHeight
     ){
+        playSound(paddleSound)
         ballSpeedX = -ballSpeedX;
     }
     // RIGHT PLAYER SCORES
     if (ballX <= 0){
         player2Score++;
+        playSound(lossSound)
         updateScoreBoard()
         resetball()
         pauseGame()
@@ -142,6 +149,7 @@ function moveBall(){
     // LEFT PLAYER SCORES
     else if (ballX >= gameWidth-ball.clientHeight ){
         player1Score++;
+        playSound(lossSound)
         updateScoreBoard()
         resetball()
         pauseGame()
@@ -170,4 +178,5 @@ function pauseGame(){
 
 function playSound(sound){
     sound.currentTime = 0;
+    sound.play()
 }
