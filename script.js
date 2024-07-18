@@ -163,8 +163,8 @@ function updateScoreBoard() {
 function resetball() {
   ballX = gameWidth / 2 - ball.clientWidth / 2;
   ballY = gameHeight / 2 - ball.clientHeight / 2;
-  ballSpeedX = Math.random() > 0.5 ? 2 : -2;
-  ballSpeedY = Math.random() > 0.5 ? 2 : -2;
+  ballSpeedX = Math.random() > 0.5 ? 3 : -3;
+  ballSpeedY = Math.random() > 0.5 ? 3 : -3;
 }
 
 function pauseGame() {
